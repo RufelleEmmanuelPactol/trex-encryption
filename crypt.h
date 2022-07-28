@@ -47,6 +47,224 @@ void rnewline (char * string)
 }
 
 
+int spchar (char * string)
+{
+	int length = strlen(string);
+	length = length - 1;
+//	printf("\t\tbroken at index %d\n", length);	
+	for (int i=0; i<length; i++)
+	{
+		switch(*(string+i))
+		{
+		//	printf("\t\tbroken at index %d\n", i);	
+			case '1':
+				break;
+				
+			case '2':
+				break;
+				
+			case '3':
+				break;
+				
+			case '4':
+				break;
+				
+			case '5':
+				break;
+				
+			case '6':
+				break;
+				
+			case '7':
+				break;
+				
+			case '8':
+				break;
+				
+			case '9':
+				break;
+				
+			case '0':
+				break;
+				
+			case 'a':
+				break;
+				
+			case 'A':
+				break;
+				
+			case 'b':
+				break;
+				
+			case 'B':
+				break;
+				
+			case 'c':
+				break;
+				
+			case 'C':
+				break;
+				
+			case 'd':
+				break;
+				
+			case 'D':
+				break;
+				
+			case 'e':
+				break;
+				
+			case 'E':
+				break;
+				
+			case 'f':
+				break;
+				
+			case 'F':
+				break;
+				
+			case 'g':
+				break;
+				
+			case 'G':
+				break;
+				
+			case 'h':
+				break;
+				
+			case 'H':
+				break;
+				
+			case 'i':
+				break;
+				
+			case 'I':
+				break;
+				
+			case 'j':
+				break;
+				
+			case 'J':
+				break;
+				
+			case 'k':
+				break;
+				
+			case 'K':
+				break;
+				
+			case 'l':
+				break;
+				
+			case 'L':
+				break;
+				
+			case 'm':
+				break;
+				
+			case 'M':
+				break;
+				
+			case 'n':
+				break;
+				
+			case 'N':
+				break;
+				
+			case 'o':
+				break;
+				
+			case 'O':
+				break;
+				
+			case 'p':
+				break;
+			
+			case 'P':
+				break;
+			
+			case 'q':
+				break;
+				
+			case 'Q':
+				break;
+				
+			case 'r':
+				break;
+				
+			case 'R':
+				break;
+				
+			case 's':
+				break;
+				
+			case 'S':
+				break;
+				
+			case 't':
+				break;
+				
+			case 'T':
+				break;
+				
+			case 'u':
+				break;
+				
+			case 'U':
+				break;
+				
+			case 'v':
+				break;
+				
+			case 'V':
+				break;
+				
+			case 'w':
+				break;
+				
+			case 'W':
+				break;
+				
+			case 'x':
+				break;
+				
+			case 'X':
+				break;
+				
+			case 'y':
+				break;
+				
+			case 'Y':
+				break;
+				
+			case 'z':
+				break;
+				
+			case 'Z':
+				break;
+				
+			case ' ':
+				break;
+				
+			case '.':
+				break;
+				
+			case 'ñ':
+				break;
+				
+			case 'Ñ':
+				break;
+				
+			case '\0':
+				break;
+			
+			case '\n':
+				break;
+			return 1;
+		}
+		
+	}
+}
 
 
 
@@ -66,7 +284,8 @@ void encrypt (char * string)
 {
 	srand(time(NULL));
 	int length = strlen(string);
-	char tstring[length];
+	char * tstring;
+	tstring = (char*)malloc(sizeof(char)*10000);
 	strcpy(tstring, string);
 	int olength = (3*length)+4;
 	for (int i = 0; i<olength; i++)
@@ -136,7 +355,8 @@ void encrypt (char * string)
 void decrypt (char * string)
 {
 	int length = strlen(string);
-	char tstring[length];
+	char * tstring;
+	tstring = (char*)malloc(sizeof(char)*10000);
 	strcpy(tstring, string);
 	strcpy(string, "");
 //	printf("\nString reset: %s\n", string);
@@ -161,7 +381,8 @@ void decrypt (char * string)
 	}
 	//printf("\nfdegree = %d\nsdegree = %d\n", fdegree, sdegree);
 	int base = 0;
-	char dec[flength];
+	char * dec;
+	dec = (char*)malloc(sizeof(char)*10000);
 	for (int i=4; i<length; i+=3)
 	{
 		if (tstring[i]==68+fdegree&&tstring[i+1]==64+fdegree)
@@ -177,11 +398,12 @@ void decrypt (char * string)
 			char checker;
 			//printf("\nChange to: %c at index %d\n", dec[base], base);
 			checker = tstring[i+1] - sdegree;
-			if (checker!=dec[base])
+		/*	if (checker!=dec[base])
 			{
 		//		printf("\nString corrupted...\n");
 				return;
 			}
+			*/
 		}
 	//	printf("\npass");
 		//string[i] = tstring[base]+fdegree;
@@ -191,7 +413,7 @@ void decrypt (char * string)
 
 	}
 	strcpy(string, dec);
-	//printf("\nFinished string: %s\n", string);
+//	printf("\nFinished string: %s\n", string);
 	
 	return;
 }
