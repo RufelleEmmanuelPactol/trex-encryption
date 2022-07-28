@@ -21,16 +21,16 @@ as of version 1.0, crypt.h has four functions:
 
 Patches
 
-1.00 - 
+	1.00 - 
 		baseline encryption
-1.10 - 
+	1.10 - 
 		added spchar()
 		added rnewline()
 		added a workable interface
 		added .exe file
 		added main.cpp
-1.11 - 
+	1.11 - 
 		minor update
 		increased MAX size from 32 -> 100
 		fixed decrypted string location
-	fixed inconsistency crash bug
+		fixed inconsistency crash bug
