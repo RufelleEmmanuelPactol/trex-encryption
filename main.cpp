@@ -5,9 +5,9 @@ void display();
 
 int main ()
 {
-	int MAX = 30;
+	int MAX = 100;
 	char *ptr;
-	ptr = (char*)malloc(sizeof(char)*10000);
+	ptr = (char*)malloc(sizeof(char)*(MAX*5));
 	display();
 	int repeat = 1;
 	while (repeat!=0)
@@ -28,11 +28,12 @@ int main ()
 					continue;
 				}
 			*/	
+		//		printf("length is: %d\n", strlen(ptr));
 				if (strlen(ptr)>MAX)
 				{
+		//			printf("Check");
 					int length = strlen(ptr);
 					int dlen = MAX*2-length;
-					fgets(ptr, dlen*100, stdin);
 					printf("\t\tToo many characters! Max is %d.\n", MAX);
 					continue;
 				}
@@ -54,7 +55,7 @@ int main ()
 				}
 				*/
 				
-				printf("\t\tDecrypted string is: %s\n", ptr);
+				printf("\t\tDecrypted string is: \n\t\t%s\n", ptr);
 				
 				
 		}
