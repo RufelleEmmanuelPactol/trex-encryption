@@ -20,5 +20,6 @@ as of version 1.0, crypt.h has four functions:
 
 
 Patches
+
 	1.0 - baseline encryption
 	1.1 - added spchar(), rnewline(), and a workable interface.
