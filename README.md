@@ -19,3 +19,6 @@ as of version 1.0, crypt.h has four functions:
 	it is a decryption algorithm and utilizes tamper() to check if a string is a legitimate string or not. 
 
 
+Patches
+	1.0 - baseline encryption
+	1.1 - added spchar(), rnewline(), and a workable interface.
