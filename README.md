@@ -19,6 +19,3 @@ as of version 1.0, crypt.h has four functions:
 	it is a decryption algorithm and utilizes tamper() to check if a string is a legitimate string or not. 
 
 
-as of version 1.0, these are the current weaknesses of crypt.h:
-- does not encrypt special characters properly
-- it has a security vulnerability concerning the "string corrupted" if the hacker can time
