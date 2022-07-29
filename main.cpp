@@ -39,7 +39,7 @@ int main ()
 				}
 				rnewline(ptr);
 				encrypt(ptr);
-				printf("\t\tEncrypted string is: %s\n", ptr);
+				printf("\t\tEncrypted string is: \n\t\t%s\n", ptr);
 				break; 
 			
 			case 2:
