@@ -40,11 +40,13 @@ as of version 1.0, crypt.h has four functions:
 		added a workable interface
 		added .exe file
 		added main.cpp
-	1.2.0 - 
+	v1.2.0 - 
 		minor update
 		increased MAX size from 32 -> 100
 		fixed decrypted string location
 		fixed inconsistency crash bug
-	1.3.0 -
+	v1.3.0 -
 		fixed and implemented the tamper() function
 		have tamper checks
+	v1.3.1 -
+		fixed a tamper() print bug
