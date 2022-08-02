@@ -10,6 +10,7 @@ int main ()
 	ptr = (char*)malloc(sizeof(char)*(MAX*5));
 	display();
 	int repeat = 1;
+	char test[MAX];
 	while (repeat!=0)
 	{
 		printf("\n\n\tCommands:\n\t\t1: Encrypt String\n\t\t2: Decrypt String\n\t\t0: Exit\n\t\tEnter command: ", &repeat);
@@ -21,6 +22,8 @@ int main ()
 			case 1:
 				printf("\t\tEnter string: ");
 				fgets(ptr, MAX*2, stdin);
+				rnewline(ptr);
+				strcpy(test, ptr);
 				//printf("sp is %d\n", sp);
 			/*	if(spchar(ptr)==1)
 				{
@@ -46,16 +49,26 @@ int main ()
 				printf("\t\tEnter string: ");
 				fgets(ptr, MAX*5, stdin);
 				rnewline(ptr);
-				decrypt(ptr);
 				int ver = tamper(ptr);
-				/*if (!ver)
+				if (!ver)
 				{
 					printf("\t\tString is tampered! Make sure to not add a space when copying the string!\n");
 					continue;
 				}
-				*/
-				
+				else
+				{
+					printf("\t\tSuccess! Decrypted string integrity secured!\n");
+				}
+			
+				decrypt(ptr);	
 				printf("\t\tDecrypted string is: \n\t\t%s\n", ptr);
+				if (strcmp(ptr, test)==0)
+				{
+			//		printf("\nCODE VERIFIED\n");
+				}
+				else{
+			//		printf("\nTEST FAILED\n");
+				}
 				
 				
 		}
