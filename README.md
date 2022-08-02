@@ -32,21 +32,25 @@ as of version 1.0, crypt.h has four functions:
 
 ### Patches
 
-	v1.0.0 - 
+	v1.0.0: Welcome to T-Rex
 		baseline encryption
-	v1.1.0 - 
+		
+	v1.1.0: Glass Bead Update
 		added spchar()
 		added rnewline()
 		added a workable interface
 		added .exe file
 		added main.cpp
-	v1.2.0 - 
+		
+	v1.2.0: Tree Hill Update
 		minor update
 		increased MAX size from 32 -> 100
 		fixed decrypted string location
 		fixed inconsistency crash bug
-	v1.3.0 -
+		
+	v1.3.0: Time Shift Update
 		fixed and implemented the tamper() function
 		have tamper checks
-	v1.3.1 -
+		
+	v1.3.1: Time Shift Update - fix
 		fixed a tamper() print bug
