@@ -1,6 +1,6 @@
 # trex-encryption
 
-##Major Update!
+## Major Update!
 
 T-Rex Encryption Algorithm is finally out. With version 1.3, we are introducing major bug fixes, and are introducing a critical function: the tamper() function.
 
@@ -8,7 +8,7 @@ The tamper function allows the algorithm to check whether a string is legitimate
 
 Download the file from here: https://drive.google.com/file/d/1jmSrIrYOE7JL96UtHmmO8L3nN9TcTzeM/view?usp=sharing
 
-##About T-Rex Encryption
+## About T-Rex Encryption
 
 T-rex encryption is a string encryption program that uses the crypt.h header file originally intended for "Election with C."
 function guide for crpyt.h :
@@ -30,7 +30,7 @@ as of version 1.0, crypt.h has four functions:
 	it is a decryption algorithm and utilizes tamper() to check if a string is a legitimate string or not. 
 
 
-Patches
+### Patches
 
 	v1.0.0 - 
 		baseline encryption
