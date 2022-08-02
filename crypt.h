@@ -3,6 +3,19 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include <windows.h>
+#include <conio.h>
+
+void gotoxy(short a, short b) //Custom gotoxy() function
+{
+    COORD coordinates; //Data type of co-ordinates
+    coordinates.X = a; //Assign value to X- Co-ordinate
+    coordinates.Y = b; //Assign value to Y Co-ordinate
+ 
+SetConsoleCursorPosition(
+        GetStdHandle(STD_OUTPUT_HANDLE), coordinates);
+ 
+}
 
 /*
 function guide for crpyt.h :
@@ -422,25 +435,27 @@ int tamper (char * string)
 {
 
 	int length = strlen(string);
+	char tstring[length];
 	int flength = length - 4;
 	flength = flength/3;
 	int fdegree, sdegree;
 	sdegree = string[0]-66;
+	strcpy(tstring, string);
 	//printf("\nchecking: \n");
 	if (string[0]>string[length-1])
 	{
-		//printf("big first subtracting %c from %c\nthis is %d-%d\n", tstring[0], tstring[length-1]), tstring[0], tstring[length-1];
+		printf("big first subtracting %c from %c\nthis is %d-%d\n", tstring[0], tstring[length-1], tstring[0], tstring[length-1]);
 		fdegree = string[0] - string[length-1];
 		fdegree = fdegree % 16;
 	}
 	else
 	{
-		//printf("big last subtracting %c from %c\n", tstring[length-1], tstring[0]);
+		printf("big last subtracting %c from %c\n", tstring[length-1], tstring[0]);
 		fdegree = string[length-1] - string[0];
 	//	printf("\ncheck one fdegree: %d\n", fdegree);
 		fdegree = fdegree % 16;
 	}
-//	printf("\n the fdegree is %d", fdegree);
+	printf("\n the fdegree is %d", fdegree);
 	int enc = string[1];
 	if (string[2]!=enc+fdegree)
 	{
