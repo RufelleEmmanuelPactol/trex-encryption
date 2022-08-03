@@ -56,4 +56,8 @@ as of version 1.0, crypt.h has four functions:
 		fixed a tamper() print bug
 		
 	v1.3.2:
-		introduced test-cases.cpp for testing the integrity of the tamper() function and the accuracy of the decrypt() function.
+		introduced test-cases.cpp for testing the integrity of the tamper()
+		function and the accuracy of the decrypt() function.
+		
+	v1.3.3:
+		fixed tamper() accuracy, now at 67.77%
