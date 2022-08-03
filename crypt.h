@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #include <math.h>
 #include <stdlib.h>
@@ -292,7 +291,7 @@ int spchar (char * string)
 
 char random [] = {'a', 'A', 'b', 'B', 'c', 'C', 'd', 'D', 'e', 'E', 'f', 'F', 'g', 'G', 'h', 'H', 'i', 'I' ,'j', 'J', 'k', 'K', 'l', 'L', 'm', 'M', 'n', 'N', 'o', 'O', 'p', 'P', 'q', 'Q', 'r', 'R', 's', 'S', 't', 'T', 'u', 'U', 'v', 'V', 'w', 'W', 'x', 'X', 'y', 'Y', 'z', 'Z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
 
-int tamper(char * string);
+int tamper(char * str);
 
 void encrypt (char * string)
 {
@@ -418,10 +417,6 @@ void decrypt (char * string)
 				return;
 			}
 			*/
-		if (i==length-1)
-		{
-			dec[base+1] = '\0';
-		}
 		}
 	//	printf("\npass");
 		//string[i] = tstring[base]+fdegree;
@@ -430,13 +425,17 @@ void decrypt (char * string)
 		continue;
 
 	}
+	dec[base+1] = '\0';
 	strcpy(string, dec);
 //	printf("\nFinished string: %s\n", string);
 	
 	return;
 }
 
-int tamper (char * string)
+
+
+
+int BetaTamper (char * string)
 {
 
 	int length = strlen(string);
@@ -468,9 +467,10 @@ int tamper (char * string)
 //		printf("initiating checkenc\n");
 		return 0;
 	}
-	for (int i=4; i<length; i+=3)
+//	printf("length is %d\n", length);
+	for (int i=4; i<=length; i+=3)
 	{
-//			printf("initiating check\n");
+	//	printf("initiating check of %c and %c\n, string[i]-fdegree, string[i+1]-sdegree");
 		if (string[i]-fdegree!=string[i+1]-sdegree)
 		{
 			if (string[i]-4!=string[i+1])
@@ -478,18 +478,132 @@ int tamper (char * string)
 			//	printf("\ntampered\n");
 				return 0;
 			}
-			
-			/*
-		string[i] = tstring[base]+fdegree;
-		string[i+1] = tstring[base]+sdegree;
-		base = base + 1;
-		string[olength] = '\0';
-			
-			*/
 			//tstring[i]==68+fdegree&&tstring[i+1]==64+fdegree
 		}
 	//	printf("not tampered\n");
+	}
+			return 1;
+	
+}
+
+void sCheck (char * string)
+{
+	int length = strlen(string);
+	char * tstring;
+	tstring = (char*)malloc(sizeof(char)*10000);
+	strcpy(tstring, string);
+	strcpy(string, "");
+//	printf("\nString reset: %s\n", string);
+	int flength = length - 4;
+	flength = flength/3;
+//	printf("\nlength = %d\nflength = %d\n", length, flength);
+	int fdegree, sdegree;
+	sdegree = tstring[0]-66;
+//	printf("\nchecking: \n");
+	if (tstring[0]>tstring[length-1])
+	{
+		//printf("big first subtracting %c from %c\nthis is %d-%d\n", tstring[0], tstring[length-1]), tstring[0], tstring[length-1];
+		fdegree = tstring[0] - tstring[length-1];
+		fdegree = fdegree % 16;
+	}
+	else
+	{
+		//printf("big last subtracting %c from %c\n", tstring[length-1], tstring[0]);
+		fdegree = tstring[length-1] - tstring[0];
+	//	printf("\ncheck one fdegree: %d\n", fdegree);
+		fdegree = fdegree % 16;
+	}
+//	printf("\nfdegree = %d\nsdegree = %d\n", fdegree, sdegree);
+	int base = 0;
+	char * dec;
+	dec = (char*)malloc(sizeof(char)*10000);
+	for (int i=4; i<length; i+=3)
+	{
+		if (tstring[i]==68+fdegree&&tstring[i+1]==64+fdegree)
+		{
+			dec[base] = ' ';
+			//printf("\nspace detected at decryption, found at index point %d", base);
+			base++;
+			continue;
+		}
+		else
+		{
+			dec[base] = tstring[i+1] - sdegree;
+			char checker;
+			//printf("\nChange to: %c at index %d\n", dec[base], base);
+			checker = tstring[i+1] - sdegree;
+		/*	if (checker!=dec[base])
+			{
+		//		printf("\nString corrupted...\n");
+				return;
+			}
+			*/
+		if (i==length-1)
+		{
+			dec[base+1] = '\0';
+		}
+		}
+	//	printf("\npass");
+		//string[i] = tstring[base]+fdegree;
+		//string[i+1] = tstring[base]+sdegree;
+		base = base + 1;
+		continue;
+
+	}
+	strcpy(string, dec);
+//	printf("\nFinished string: %s\n", string);
+	
+	return;
+}
+
+int tamper (char * str)
+{
+	char string[1000];
+	strcpy(string, str);
+	int length = strlen(string);
+	char tstring[length];
+	int flength = length - 4;
+	flength = flength/3;
+	int fdegree, sdegree;
+	sdegree = string[0]-66;
+	strcpy(tstring, string);
+	//printf("\nchecking: \n");
+	if (string[0]>string[length-1])
+	{
+//	printf("big first subtracting %c from %c\nthis is %d-%d\n", tstring[0], tstring[length-1], tstring[0], tstring[length-1]);
+		fdegree = string[0] - string[length-1];
+		fdegree = fdegree % 16;
+	}
+	else
+	{
+//		printf("big last subtracting %c from %c\n", tstring[length-1], tstring[0]);
+		fdegree = string[length-1] - string[0];
+	//	printf("\ncheck one fdegree: %d\n", fdegree);
+		fdegree = fdegree % 16;
+	}
+//	printf("\n the fdegree is %d", fdegree);
+	int enc = string[1];
+	if (string[2]!=enc+fdegree)
+	{
+//		printf("enc+fdegree = %c where enc = %c and fdegree is %d\n", enc+fdegree, enc, fdegree);
+//		printf("initiating checkenc\n");
+		return 0;
+	}
+	char first;
+	int lengthf = strlen(string);
+	char second[lengthf];
+	strcpy(second, string);
+	decrypt(string);
+	sCheck(second);
+	//printf("Comparing d = %s and s= %s\n", string, second);
+	if (strcmp(string, second)==0)
+	{
+		strcpy(string, second);
 		return 1;
 	}
-	
+	else
+	{
+		return 0;
+	}
+
 }
