@@ -1,6 +1,32 @@
 #include "crypt.h"
 
 
+void delay()
+{
+	int b = 10;
+	for (int i=0; i<100000; i++)
+	{
+		for (int j=0; j<10000; j++)
+		{
+			int a = b;
+		}
+	}
+}
+
+void Edelay()
+{
+	int b = 10;
+	for (int i=0; i<1900; i++)
+	{
+		for (int j=0; j<900000000; j++)
+		{
+			int a = b;
+			int b = 9292202292/32023020332;
+			a = b;
+		}
+	}
+}
+
 void tamperTest(char * string, int repeat)
 {
 	printf("\n\nTESTING FOR THE TAMPER() FUNCTION:\n\n");
@@ -15,6 +41,14 @@ void tamperTest(char * string, int repeat)
 //	printf("Length of string is %d and the string is %s", length, string);
 	for (int i=0; i<length-1; i++)
 	{
+		if (length<35)
+		{
+			delay();
+		}
+		else
+		{
+			Edelay;
+		}
 		char testString[length];
 		strcpy(testString, string);
 		testString[i] = testString[i] + (rand()%4)+1;
@@ -66,6 +100,7 @@ void consistency (char * string, int repeats)
 	float pass;
 	for (int i=1; i<=repeats; i++)
 	{
+		delay();
 		printf("Test case for consistency #%d: ", i);
 		encrypt(same);
 		decrypt(same);
