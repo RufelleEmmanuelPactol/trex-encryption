@@ -61,3 +61,4 @@ as of version 1.0, crypt.h has four functions:
 		
 	v1.3.3:
 		fixed tamper() accuracy, now at 67.77%
+		improve test-cases.cpp speed
